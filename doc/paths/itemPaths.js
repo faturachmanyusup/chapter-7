@@ -42,7 +42,11 @@ module.exports = {
                 price: {
                   type: 'number'
                 },
-              }
+              },
+              required: [
+                'name',
+                'price',
+              ]
             }
           }
         }

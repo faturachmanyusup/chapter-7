@@ -59,13 +59,13 @@ module.exports = {
                 password: {
                   type: 'string',
                 },
-              }
+              },
+              required: [
+                'name',
+                'email',
+                'password'
+              ]
             },
-            required: [
-              'name',
-              'password',
-              'email'
-            ]
           }
         }
       },
@@ -99,12 +99,12 @@ module.exports = {
                 password: {
                   type: 'string'
                 },
-              }
+              },
+              required: [
+                'password',
+                'email'
+              ]
             },
-            required: [
-              'password',
-              'email'
-            ]
           }
         }
       },

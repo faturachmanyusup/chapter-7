@@ -2,13 +2,13 @@ const { User } = require('../models');
 const { validateText } = require("../helpers/bcrypt");
 const { encode } = require("../helpers/jwt");
 
-class AdminController {
+class SellerController {
   static register(req, res) {
     User.create({
       name: req.body.name,
       email: req.body.email,
       password: req.body.password,
-      role: 1
+      role: 2
     })
       .then(() => {
         res.status(201).json({
@@ -52,29 +52,6 @@ class AdminController {
       })
       .catch((err) => res.status(err.status || 500).json(err))
   }
-
-  static getAll(req, res) {
-   return User.findAll({
-      attributes: [
-        'id',
-        'name',
-        'email',
-        'createdAt',
-        'updatedAt',
-      ],
-      where: {
-        role: 1
-      }
-    })
-    .then(user => {
-      return res.status(200).json({
-        status: 200,
-        message: 'Berhasil mendapatkan list admin',
-        list: user
-      })
-    })
-    .catch((err) => res.status(err.status || 500).json(err))
-  }
 }
 
-module.exports = AdminController;
+module.exports = SellerController;

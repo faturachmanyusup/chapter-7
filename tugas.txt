@@ -1,0 +1,19 @@
+Authentication & Authorization
+
+Admin
+- register
+- login
+
+Customer
+- register
+- login
+
+Seller
+- register
+- login
+
+Item
+  - create item
+    Only Seller can access it.
+  - delete item
+    Only owner & admin can delete it.

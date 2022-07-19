@@ -3,7 +3,7 @@ const { validateText } = require("../helpers/bcrypt");
 const { encode } = require("../helpers/jwt");
 
 class SellerController {
-  static register(req, res) {
+  static register(req, res, next) {
     User.create({
       name: req.body.name,
       email: req.body.email,
@@ -28,7 +28,6 @@ class SellerController {
       .then((user) => {
         if (!user) throw { error: 'User Not Found' };
 
-        //  validate password
         const isValid = validateText(req.body.password, user.dataValues.password);
         if (!isValid) throw { error: 'Password Invalid'};
 

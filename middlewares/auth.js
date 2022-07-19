@@ -3,38 +3,34 @@ const { decode } = require("../helpers/jwt")
 module.exports = {
   authentication: (req, res, next) => {
     if (!req.headers.authorization) {
-      return res.status(401).json({
-        status: 401,
-        message: 'Unauthorized. Only logged in users can access this endpoint.'
+      return next({
+        error: 'Unauthenticated'
       })
     }
 
     try {
       req.user = decode(req.headers.authorization);
     } catch (err) {
-      return res.status(401).json({
-        status: 400,
-        message: 'Token invalid'
-      })
+      return next({ error: 'Invalid Token' })
     }
 
-    next();
+    return next();
   },
   authorization: {
     admin: (req, res, next) => {
-      if (req.user.role === 1) next();
+      if (req.user.role === 1) return next();
 
-      return res.status(401).json({
-        status: 401,
-        message: 'Unauthorized. Only admin can access this endpoint.'
+      return next({
+        error: 'Unauthorized',
+        authType: 'Admin'
       })
     },
     seller: (req, res, next) => {
-      if (req.user.role === 2) next();
+      if (req.user.role === 2) return next();
 
-      return res.status(401).json({
-        status: 401,
-        message: 'Unauthorized. Only seller can access this endpoint.'
+      return next({
+        error: 'Unauthorized',
+        authType: 'Seller'
       })
     },
   }

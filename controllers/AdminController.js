@@ -73,7 +73,12 @@ class AdminController {
         list: user
       })
     })
-    .catch((err) => res.status(err.status || 500).json(err))
+    .catch((err) => {
+      return res.status(err.status || 500).json({
+        status: 500,
+        message: 'Internal server error'
+      })
+    })
   }
 }
 

@@ -16,28 +16,21 @@ class SellerController {
           message: 'Berhasil Registrasi!'
         })
       })
-      .catch(err => {
-        res.status(err.status || 500).json(err);
-      })
+      .catch(err => next(err))
   }
 
-  static login(req, res) {
+  static login(req, res, next) {
     User.findOne({
       where: {
         email: req.body.email
       }
     })
       .then((user) => {
-        if (!user) throw {
-          status: 404,
-          message: 'User not found'
-        };
+        if (!user) throw { error: 'User Not Found' };
 
+        //  validate password
         const isValid = validateText(req.body.password, user.dataValues.password);
-        if (!isValid) throw {
-          status: 400,
-          message: 'Wrong password!'
-        }
+        if (!isValid) throw { error: 'Password Invalid'};
 
         return res.status(200).json({
           status: 200,
@@ -50,7 +43,7 @@ class SellerController {
           })
         });
       })
-      .catch((err) => res.status(err.status || 500).json(err))
+      .catch((err) => next(err))
   }
 }
 

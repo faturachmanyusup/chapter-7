@@ -3,7 +3,7 @@ const { validateText } = require("../helpers/bcrypt");
 const { encode } = require("../helpers/jwt");
 
 class AdminController {
-  static register(req, res) {
+  static register(req, res, next) {
     User.create({
       name: req.body.name,
       email: req.body.email,
@@ -16,28 +16,20 @@ class AdminController {
           message: 'Berhasil Registrasi!'
         })
       })
-      .catch(err => {
-        res.status(err.status || 500).json(err);
-      })
+      .catch(err => next(err))
   }
 
-  static login(req, res) {
+  static login(req, res, next) {
     User.findOne({
       where: {
         email: req.body.email
       }
     })
       .then((user) => {
-        if (!user) throw {
-          status: 404,
-          message: 'User not found'
-        };
+        if (!user) throw { error: 'User Not Found' };
 
         const isValid = validateText(req.body.password, user.dataValues.password);
-        if (!isValid) throw {
-          status: 400,
-          message: 'Wrong password!'
-        }
+        if (!isValid) throw { error: 'Password Invalid'};
 
         return res.status(200).json({
           status: 200,
@@ -50,10 +42,10 @@ class AdminController {
           })
         });
       })
-      .catch((err) => res.status(err.status || 500).json(err))
+      .catch((err) => next(err))
   }
 
-  static getAll(req, res) {
+  static getAll(req, res, next) {
    return User.findAll({
       attributes: [
         'id',
@@ -73,12 +65,7 @@ class AdminController {
         list: user
       })
     })
-    .catch((err) => {
-      return res.status(err.status || 500).json({
-        status: 500,
-        message: 'Internal server error'
-      })
-    })
+    .catch((err) => next(err))
   }
 }
 

@@ -1,0 +1,14 @@
+- masuk ke branch utama (main, master, staging, dev)
+
+- git pull origin main
+- git checkout -b feature/documentation
+
+- mulai ngoding
+
+- git pull origin main - memastikan branch saat ini sudah up to date dengan remote
+
+- git add .
+- git commit
+- git push origin feature/documentation
+
+- buat merge request ke main

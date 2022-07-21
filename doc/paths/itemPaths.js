@@ -32,7 +32,7 @@ module.exports = {
       requestBody: {
         required: true,
         content: {
-          'application/x-www-form-urlencoded': {
+          'multipart/form-data': {
             schema: {
               type: 'object',
               properties: {
@@ -42,6 +42,10 @@ module.exports = {
                 price: {
                   type: 'number'
                 },
+                file: {
+                  type: 'string',
+                  format: 'binary'
+                }
               },
               required: [
                 'name',

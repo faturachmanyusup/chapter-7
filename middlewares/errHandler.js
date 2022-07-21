@@ -7,6 +7,26 @@ function errorHandler (err, req, res, next) {
     message = 'Please login first to access this endpoint.'
   }
 
+  else if (err.message === 'Unsupport file format') {
+    status = 400;
+    message = `Unsupport file format. Can only accept ${err.support} format.`;
+  }
+
+  else if (err.message === 'File cannot be empty') {
+    status = 400;
+    message = `File cannot be empty. Required minimal 1 file.`;
+  }
+
+  else if (err.message === 'Field value too long') {
+    status = 400;
+    message = `Max accumulation files size is 500Kb.`;
+  }
+
+  else if (err.message === 'File too large') {
+    status = 400;
+    message = `Max file size is 500Kb.`;
+  }
+
   else if (err.error === 'Null Value Constraint') {
     status = 400;
     message = `Please kindly check your input. ${err.attribute} cannot be null.`;

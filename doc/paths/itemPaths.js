@@ -42,9 +42,12 @@ module.exports = {
                 price: {
                   type: 'number'
                 },
-                file: {
-                  type: 'string',
-                  format: 'binary'
+                files: {
+                  type: 'array',
+                  items: {
+                    type: 'string',
+                    format: 'binary'
+                  }
                 }
               },
               required: [
@@ -57,6 +60,70 @@ module.exports = {
       },
       responses: {
         201: {
+          content: {
+            'application/json': {
+              example: {
+                status: 201,
+                message: 'Berhasil membuat item',
+              }
+            }
+          }
+        },
+        400: {
+          content: {
+            'application/json': {
+              example: {
+                status: 400,
+                message: 'Token invalid',
+              }
+            }
+          }
+        },
+        401: {
+          content: {
+            'application/json': {
+              example: {
+                status: 401,
+                message: 'Not Authorized',
+              }
+            }
+          }
+        },
+      },
+      security: [
+        {
+          token: []
+        }
+      ],
+    }
+  },
+  '/items/image': {
+    delete: {
+      tags: ['item'],
+      requestBody: {
+        required: true,
+        content: {
+          'application/x-www-form-urlencoded': {
+            schema: {
+              type: 'object',
+              properties: {
+                id: {
+                  type: 'string'
+                },
+                public_id: {
+                  type: 'string'
+                }
+              },
+              required: [
+                'id',
+                'public_id',
+              ]
+            }
+          }
+        }
+      },
+      responses: {
+        200: {
           content: {
             'application/json': {
               example: {

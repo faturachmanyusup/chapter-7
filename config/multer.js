@@ -2,7 +2,11 @@ const multer = require('multer');
 
 const fileFilter = (req, file, next) => {
   if (!file) next('File cannot be empty');
-  else if (file.mimetype !== 'image/png') next({
+  else if (
+    file.mimetype !== 'image/png' &&
+    file.mimetype !== 'image/jpg' &&
+    file.mimetype !== 'image/jpeg'
+  ) next({
     message: 'Unsupport file format',
     support: 'png'
   });
@@ -44,5 +48,6 @@ module.exports = multer({
   fileFilter,
   limits: {
     fileSize: 500_000,
+    fieldNameSize: 1_000_000
   }
 });

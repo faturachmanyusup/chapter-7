@@ -29,7 +29,7 @@ class AdminController {
         if (!user) throw { error: 'User Not Found' };
 
         const isValid = validateText(req.body.password, user.dataValues.password);
-        if (!isValid) throw { error: 'Password Invalid'};
+        if (!isValid) throw { error: 'Password Invalid' };
 
         return res.status(200).json({
           status: 200,
@@ -46,7 +46,7 @@ class AdminController {
   }
 
   static getAll(req, res, next) {
-   return User.findAll({
+    return User.findAll({
       attributes: [
         'id',
         'name',
@@ -58,14 +58,16 @@ class AdminController {
         role: 1
       }
     })
-    .then(user => {
-      return res.status(200).json({
-        status: 200,
-        message: 'Berhasil mendapatkan list admin',
-        list: user
+      .then(user => {
+        return res.status(200).json({
+          status: 200,
+          message: 'Berhasil mendapatkan list admin',
+          list: user
+        })
       })
-    })
-    .catch((err) => next(err))
+      .catch((err) => {
+        next(err);
+      })
   }
 }
 

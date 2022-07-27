@@ -29,6 +29,10 @@ app.use('/items', ItemRouter);
 //  error handler middlerware
 app.use(errorHandler);
 
-app.listen(PORT, () => {
-  console.log('<<<< SERVER RUNNING ON PORT', PORT);
-})
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(PORT, () => {
+    console.log('<<<< SERVER RUNNING ON PORT', PORT);
+  })
+}
+
+module.exports = app;

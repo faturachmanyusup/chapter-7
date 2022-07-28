@@ -1,4 +1,5 @@
 function errorHandler (err, req, res, next) {
+  console.log(err.message, '<<< ERROR');
   let message = 'Internal server error';
   let status = 500;
 
@@ -10,6 +11,16 @@ function errorHandler (err, req, res, next) {
   else if (err.message === 'Unsupport file format') {
     status = 400;
     message = `Unsupport file format. Can only accept ${err.support} format.`;
+  }
+
+  else if (err.message === 'Name empty') {
+    status = 400;
+    message = `Name cannot be empty.`;
+  }
+
+  else if (err.message === 'Illegal arguments: undefined, string') {
+    status = 400;
+    message = `Password cannot be empty.`;
   }
 
   else if (err.message === 'File cannot be empty') {

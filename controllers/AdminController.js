@@ -4,6 +4,8 @@ const { encode } = require("../helpers/jwt");
 
 class AdminController {
   static register(req, res, next) {
+    if (!req.body.name) return next({ message: 'Name empty' });
+
     User.create({
       name: req.body.name,
       email: req.body.email,
@@ -61,7 +63,7 @@ class AdminController {
       .then(user => {
         return res.status(200).json({
           status: 200,
-          message: 'Berhasil mendapatkan list admin',
+          message: 'Berhasil mendapatkan list admin.',
           list: user
         })
       })

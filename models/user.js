@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'User',
   });
 
-  User.addHook('beforeCreate', (user, options) => {
+  User.addHook('beforeCreate', (user) => {
     try {
       user.id = uuid.v4();
       user.password = hash(user.password);

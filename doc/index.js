@@ -11,7 +11,7 @@ module.exports = {
   },
   servers: [
     {
-      url: 'http://localhost:4000',
+      url: process.env.HOST,
       description: 'Dev server'
     }
   ],

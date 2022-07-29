@@ -26,9 +26,6 @@ module.exports = {
     "host": process.env.DB_HOST_DEV,
     "port": process.env.DB_PORT_DEV,
     "dialect": process.env.DB_DIALECT_DEV,
-    "logging": false,
-    "ssl": {
-      "rejectUnauthorized": false
-    }
+    "logging": false
   }
 }

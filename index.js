@@ -10,7 +10,6 @@ const SellerRouter = require('./routes/seller.routes');
 const errorHandler = require('./middlewares/errHandler');
 
 const app = express();
-const PORT = 4000;
 
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(doc, {
   swaggerOptions: {
@@ -30,8 +29,8 @@ app.use('/items', ItemRouter);
 app.use(errorHandler);
 
 if (process.env.NODE_ENV !== 'test') {
-  app.listen(PORT, () => {
-    console.log('<<<< SERVER RUNNING ON PORT', PORT);
+  app.listen(process.env.PORT, () => {
+    console.log('<<<< SERVER RUNNING ON PORT', process.env.PORT);
   })
 }
 

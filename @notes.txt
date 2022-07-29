@@ -1,0 +1,12 @@
+1. Create akun heroku
+2. Install heroku-cli
+3. Login menggunakan perintah heroku login
+4. Heroku create
+5. Add adds-on Heroku Posgres (sebagai database cloud)
+6. Add config heroku config vars
+7. Create Procfile file
+8. Add engines (node, npm) key in package.json
+9. Make sure PORT not write in the code
+10. Push to heroku
+11. Do migration
+12. Test server on urlfrom heroku

@@ -27,8 +27,8 @@ module.exports = {
     "port": process.env.DB_PORT_DEV,
     "dialect": process.env.DB_DIALECT_DEV,
     "logging": false,
-    "dialectOptions": {
-      "ssl":  true
-    },
+    "ssl": {
+      "rejectUnauthorized": false
+    }
   }
 }

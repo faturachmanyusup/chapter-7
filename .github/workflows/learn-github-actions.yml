@@ -3,9 +3,9 @@ on:
   push:
     branches:
       - 'main'
-  workflow_dispatch
+  workflow_dispatch:
 jobs:
-  exaple-matrix:
+  example-matrix:
     strategy:
       matrix:
         version: [10, 12, 14]

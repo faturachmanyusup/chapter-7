@@ -27,3 +27,4 @@ jobs:
           DB_DIALECT_DEV: ${{ secrets.DB_DIALECT_DEV }}
           HOST: ${{ secrets.HOST }}
           PORT: ${{ secrets.PORT }}
+          PGSSLMODE: ${{ PGSSLMODE }}

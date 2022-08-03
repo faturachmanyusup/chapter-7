@@ -10,3 +10,4 @@
 10. Push to heroku
 11. Do migration
 12. Test server on urlfrom heroku
+13. 

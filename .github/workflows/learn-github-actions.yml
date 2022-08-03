@@ -10,7 +10,10 @@ jobs:
       matrix:
         version: [10, 12, 14]
         os: [windows-2022, ubuntu-latest]
-        npm: 6
+        include:
+          - os: windows-latest
+            node: 16
+            npm: 6
       runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/setup-node@v3

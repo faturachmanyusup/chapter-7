@@ -10,7 +10,6 @@ const upload = async (file, options = { }) => {
       ...options
     })
 
-    console.log(res, '<<<<< RES');
     fs.unlinkSync(file);
 
     return res;

@@ -1,5 +1,7 @@
+const fs = require('fs');
 const jwt = require('../helpers/jwt');
 const bcrypt = require('../helpers/bcrypt');
+const cloudinary = require('../helpers/cloudinary');
 
 describe('bcrypt.js', () => {
   test('Bcrypt, invalid password as param. Bcrypt should return false.', () => {
@@ -30,5 +32,19 @@ describe('bcrypt.js', () => {
 describe('jwt.js', () => {
   test('Decode using invalid secret-key. Should throw Error.', () => {
     expect(() => jwt.decode('dsadabwhebfhb')).toThrow();
+  })
+})
+
+describe('cloudinary.js', () => {
+  test("Upload valid file. Shouldn't throw error.", async () => {
+    const imagePath = './files/test-image.png';
+
+    const res = await cloudinary.upload(imagePath);
+    expect(typeof res.public_id).toBe('string');
+    expect(typeof res.url).toBe('string');
+    expect(typeof res.secure_url).toBe('string');
+
+    //  file should be deleted (exist === false) after upload success.
+    expect(fs.existsSync(imagePath)).toBe(false);
   })
 })

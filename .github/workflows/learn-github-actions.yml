@@ -10,6 +10,15 @@ jobs:
       matrix:
         version: [10, 12, 14]
         os: [windows-2022, ubuntu-latest]
+        npm: 6
+      runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.version }}
+      - if: ${{ matrix.npm }}
+        run: npm install -g npm@${{ matrix.npm }}
+      - run: npm --version
   unit-testing:
     runs-on: ubuntu-latest
     steps:

@@ -30,6 +30,7 @@ jobs:
           PGSSLMODE: ${{ secrets.PGSSLMODE }}
   deploy:
     runs-on: ubuntu-latest
+    needs: testing
     steps:
       - uses: actions/checkout@v3
       - uses: akhileshns/heroku-deploy@v3.12.12

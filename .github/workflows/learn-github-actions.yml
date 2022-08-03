@@ -3,12 +3,20 @@ on:
   push:
     branches:
       - 'main'
+  workflow_dispatch
 jobs:
-  check-bats-version:
+  exaple-matrix:
+    strategy:
+      matrix:
+        version: [10, 12, 14]
+        os: [windows-2022, ubuntu-latest]
+  unit-testing:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: ${{ matrix.version }}
       - run: npm install
+  integration-testing:
+    runs-on: ${{ matrix.os }}

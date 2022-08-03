@@ -5,44 +5,11 @@ on:
       - 'main'
   workflow_dispatch:
 jobs:
-  example-matrix:
-    strategy:
-      matrix:
-        version: [10, 12, 14]
-        os: [windows-2022, ubuntu-latest]
-        include:
-          - os: windows-latest
-            node: 16
-            npm: 6
-    runs-on: ${{ matrix.os }}
+  testing:
+    runs-on: ubuntu-18.04
     steps:
       - uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.version }}
-      - if: ${{ matrix.npm }}
-        run: npm install -g npm@${{ matrix.npm }}
-      - run: npm --version
-  unit-testing:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.version }}
+          node-version: 16.15.0
       - run: npm install
-  integration-testing:
-    strategy:
-      matrix:
-        version: [10, 12, 14]
-        os: [windows-2022, ubuntu-latest]
-        include:
-          - os: windows-latest
-            node: 16
-            npm: 6
-    runs-on: ${{ matrix.os }}
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.version }}
-      - run: npm install
+      - run: npm run test

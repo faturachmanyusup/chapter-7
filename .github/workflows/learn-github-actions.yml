@@ -31,6 +31,14 @@ jobs:
           node-version: ${{ matrix.version }}
       - run: npm install
   integration-testing:
+    strategy:
+      matrix:
+        version: [10, 12, 14]
+        os: [windows-2022, ubuntu-latest]
+        include:
+          - os: windows-latest
+            node: 16
+            npm: 6
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3

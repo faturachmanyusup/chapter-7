@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "nodemon .",
-    "test": "jest --forceExit"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",

@@ -37,7 +37,10 @@ describe('jwt.js', () => {
 
 describe('cloudinary.js', () => {
   test("Upload valid file. Shouldn't throw error.", async () => {
-    const imagePath = './files/test-image.png';
+    const imagePath = './files/66052592-ff76-4c50-81dc-606fe08c2a3c.png';
+    const clonePath = './files/clone.png';
+
+    fs.copyFileSync(imagePath, clonePath);
 
     const res = await cloudinary.upload(imagePath);
     expect(typeof res.public_id).toBe('string');
@@ -46,5 +49,6 @@ describe('cloudinary.js', () => {
 
     //  file should be deleted (exist === false) after upload success.
     expect(fs.existsSync(imagePath)).toBe(false);
+    fs.renameSync(clonePath, imagePath);
   })
 })

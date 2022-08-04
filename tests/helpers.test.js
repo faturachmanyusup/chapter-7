@@ -43,12 +43,15 @@ describe('cloudinary.js', () => {
     fs.copyFileSync(imagePath, clonePath);
 
     const res = await cloudinary.upload(imagePath);
+
     expect(typeof res.public_id).toBe('string');
     expect(typeof res.url).toBe('string');
     expect(typeof res.secure_url).toBe('string');
 
     //  file should be deleted (exist === false) after upload success.
     expect(fs.existsSync(imagePath)).toBe(false);
+
+    //  check file in cloudinary
     fs.renameSync(clonePath, imagePath);
   })
 })

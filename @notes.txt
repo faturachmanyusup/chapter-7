@@ -1,13 +1,13 @@
 1. Create akun heroku
-2. Install heroku-cli
-3. Login menggunakan perintah heroku login
-4. Heroku create
-5. Add adds-on Heroku Posgres (sebagai database cloud)
-6. Add config heroku config vars
-7. Create Procfile file
-8. Add engines (node, npm) key in package.json
-9. Make sure PORT not write in the code
-10. Push to heroku
-11. Do migration
-12. Test server on urlfrom heroku
-13. 
+2. Run command npm install heroku-cli -g
+3. Login using command heroku login
+4. Run command heroku create
+5. Login to heroku dashboard
+6. Add adds-on Heroku Posgres (sebagai database cloud)
+7. Add config heroku config vars
+8. Create Procfile file
+9. Add engines (node, npm) key in package.json
+10. Move PORT variable to .env file
+11. Push to heroku
+12. Do migration
+13. Test server on urlfrom heroku 

@@ -10,4 +10,4 @@
 10. Move PORT variable to .env file
 11. Push to heroku
 12. Do migration
-13. Test server on urlfrom heroku 
+13. Test server on url from heroku

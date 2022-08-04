@@ -64,7 +64,7 @@ module.exports = {
             'application/json': {
               example: {
                 status: 201,
-                message: 'Berhasil membuat item',
+                message: 'Item created',
               }
             }
           }
@@ -127,8 +127,8 @@ module.exports = {
           content: {
             'application/json': {
               example: {
-                status: 201,
-                message: 'Berhasil membuat item',
+                status: 200,
+                message: 'Image deleted',
               }
             }
           }
@@ -148,7 +148,7 @@ module.exports = {
             'application/json': {
               example: {
                 status: 401,
-                message: 'Not Authorized',
+                message: 'Unauthorized',
               }
             }
           }

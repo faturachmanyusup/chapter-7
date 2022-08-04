@@ -1,7 +1,12 @@
 name: weekly-testing
 on:
   schedule:
-    - cron:  '51 20 * * *'
+    - cron: '0 2 * * 0'
+  pull_request:
+    types:
+      - opened
+    branches:
+      - 'main'
   workflow_dispatch:
 jobs:
   testing:

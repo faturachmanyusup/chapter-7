@@ -84,7 +84,7 @@ module.exports = {
             'application/json': {
               example: {
                 status: 401,
-                message: 'Not Authorized',
+                message: 'Unauthorized',
               }
             }
           }

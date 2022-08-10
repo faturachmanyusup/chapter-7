@@ -17,6 +17,7 @@ module.exports = {
                 },
                 password: {
                   type: 'string',
+                  format: 'password'
                 },
               },
               required: [
@@ -54,11 +55,12 @@ module.exports = {
               properties: {
                 email: {
                   type: 'string',
-                  default: 'seller1@mail.com'
+                  default: 'example@mail.com'
                 },
                 password: {
                   type: 'string',
-                  default: 'Password'
+                  default: 'examplepassword',
+                  format: 'password'
                 },
               },
               required: [

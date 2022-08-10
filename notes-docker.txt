@@ -1,0 +1,8 @@
+1. Download Docker Client
+2. For windows users, make sure WSL already installed
+3. Install Docker Client
+4. Make sure docker installed correctly (docker images)
+6. Pull images needed from docker hub (e.g. postgres)
+5. Create dockerfile, for reference https://nodejs.org/en/docs/guides/nodejs-docker-webapp/
+7. Create docker-compose.yml, for reference https://docs.docker.com/compose/
+8. Run command "docker compose up -d"

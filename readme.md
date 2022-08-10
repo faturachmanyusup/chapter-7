@@ -2,8 +2,6 @@
 
 ### <a href='https://murmuring-beyond-12009.herokuapp.com/docs'>Try it here!</a>
 
-<br />
-
 ### Steps to run it on local:
 - install nodejs
 - install docker

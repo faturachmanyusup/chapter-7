@@ -4,6 +4,8 @@ services:
     build: .
     ports:
       - "4000:4000"
+    depends_on:
+      - database
     env_file:
       - ./.env
     environment:

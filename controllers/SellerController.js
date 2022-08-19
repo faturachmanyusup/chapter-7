@@ -1,3 +1,6 @@
+const ejs = require('ejs');
+const mail = require('../config/mail');
+
 const { User } = require('../models');
 const { validateText } = require("../helpers/bcrypt");
 const { encode } = require("../helpers/jwt");
@@ -10,13 +13,22 @@ class SellerController {
       password: req.body.password,
       role: 2
     })
+      .then(() => ejs.renderFile('./templates/user-register.ejs', { name: req.body.name }))
+      .then((html) => {
+        return mail.sendMail({
+          from: process.env.MAIL_EMAIL,
+          to: req.body.email,
+          subject: 'Selamat Bergabung',
+          html: html
+        })
+      })
       .then(() => {
-        res.status(201).json({
+        return res.status(201).json({
           status: 201,
           message: 'Berhasil Registrasi!'
         })
       })
-      .catch(err => next(err))
+      .catch(err => next(err));
   }
 
   static login(req, res, next) {

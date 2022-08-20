@@ -21,7 +21,6 @@ const server = createServer(app);
 const io = new Server(server);
 
 const onConnection = (socket) => {
-  console.log('<<< Client connected');
   chatHandler(io, socket);
 
   socket.on("disconnect", (reason) => {

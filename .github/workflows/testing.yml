@@ -1,7 +1,7 @@
 name: testing
 on:
   schedule:
-    - cron: '0 2 * * 0'
+    - cron: '35 9 * * 0'
   pull_request:
     types:
       - opened
@@ -32,3 +32,7 @@ jobs:
           HOST: ${{ secrets.HOST }}
           PORT: ${{ secrets.PORT }}
           PGSSLMODE: ${{ secrets.PGSSLMODE }}
+          MAIL_HOST: ${{ secrets.MAIL_HOST }}
+          MAIL_PORT: ${{ secrets.MAIL_PORT }}
+          MAIL_EMAIL: ${{ secrets.MAIL_EMAIL }}
+          MAIL_PASS: ${{ secrets.MAIL_PASS }}
